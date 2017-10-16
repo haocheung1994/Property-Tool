@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.job.dao.TbannerMapper" >
+  <resultMap id="BaseResultMap" type="com.job.model.Tbanner" >
+    <id column="ban_id" property="banId" jdbcType="INTEGER" />
+    <result column="ban_img" property="banImg" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ban_id, ban_img, url
+  </sql>
+  <select id="selectIndexban" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from property_banner
+    where ban_id BETWEEN 1 and 4;
+  </select>
+
+
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from property_banner
+    where ban_id = #{banId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from property_banner
+    where ban_id = #{banId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.job.model.Tbanner" >
+    insert into property_banner (ban_id, ban_img, url
+      )
+    values (#{banId,jdbcType=INTEGER}, #{banImg,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.job.model.Tbanner" >
+    insert into property_banner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="banId != null" >
+        ban_id,
+      </if>
+      <if test="banImg != null" >
+        ban_img,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="banId != null" >
+        #{banId,jdbcType=INTEGER},
+      </if>
+      <if test="banImg != null" >
+        #{banImg,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.model.Tbanner" >
+    update property_banner
+    <set >
+      <if test="banImg != null" >
+        ban_img = #{banImg,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ban_id = #{banId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.job.model.Tbanner" >
+    update property_banner
+    set ban_img = #{banImg,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where ban_id = #{banId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="property_Tool">
+    <output-path>$PROJECT_DIR$/classes/artifacts/property_Tool</output-path>
+    <root id="archive" name="property_Tool.war" />
+  </artifact>
+</component>

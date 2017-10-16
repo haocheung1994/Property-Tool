@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.job.dao.TtrafficMapper" >
+  <resultMap id="BaseResultMap" type="com.job.model.Ttraffic" >
+    <id column="signId" property="signid" jdbcType="INTEGER" />
+    <result column="mark1" property="mark1" jdbcType="INTEGER" />
+    <result column="mark2" property="mark2" jdbcType="INTEGER" />
+    <result column="mark3" property="mark3" jdbcType="INTEGER" />
+    <result column="mark4" property="mark4" jdbcType="INTEGER" />
+    <result column="mark5" property="mark5" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    signId, mark1, mark2, mark3, mark4, mark5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from traffic_statistic
+    where signId = #{signid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from traffic_statistic
+    where signId = #{signid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.job.model.Ttraffic" >
+    insert into traffic_statistic (signId, mark1, mark2, 
+      mark3, mark4, mark5
+      )
+    values (#{signid,jdbcType=INTEGER}, #{mark1,jdbcType=INTEGER}, #{mark2,jdbcType=INTEGER}, 
+      #{mark3,jdbcType=INTEGER}, #{mark4,jdbcType=INTEGER}, #{mark5,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.job.model.Ttraffic" >
+    insert into traffic_statistic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="signid != null" >
+        signId,
+      </if>
+      <if test="mark1 != null" >
+        mark1,
+      </if>
+      <if test="mark2 != null" >
+        mark2,
+      </if>
+      <if test="mark3 != null" >
+        mark3,
+      </if>
+      <if test="mark4 != null" >
+        mark4,
+      </if>
+      <if test="mark5 != null" >
+        mark5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="signid != null" >
+        #{signid,jdbcType=INTEGER},
+      </if>
+      <if test="mark1 != null" >
+        #{mark1,jdbcType=INTEGER},
+      </if>
+      <if test="mark2 != null" >
+        #{mark2,jdbcType=INTEGER},
+      </if>
+      <if test="mark3 != null" >
+        #{mark3,jdbcType=INTEGER},
+      </if>
+      <if test="mark4 != null" >
+        #{mark4,jdbcType=INTEGER},
+      </if>
+      <if test="mark5 != null" >
+        #{mark5,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.model.Ttraffic" >
+    update traffic_statistic
+    <set >
+      <if test="mark1 != null" >
+        mark1 = #{mark1,jdbcType=INTEGER},
+      </if>
+      <if test="mark2 != null" >
+        mark2 = #{mark2,jdbcType=INTEGER},
+      </if>
+      <if test="mark3 != null" >
+        mark3 = #{mark3,jdbcType=INTEGER},
+      </if>
+      <if test="mark4 != null" >
+        mark4 = #{mark4,jdbcType=INTEGER},
+      </if>
+      <if test="mark5 != null" >
+        mark5 = #{mark5,jdbcType=INTEGER},
+      </if>
+    </set>
+    where signId = #{signid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.job.model.Ttraffic" >
+    update traffic_statistic
+    set mark1 = #{mark1,jdbcType=INTEGER},
+      mark2 = #{mark2,jdbcType=INTEGER},
+      mark3 = #{mark3,jdbcType=INTEGER},
+      mark4 = #{mark4,jdbcType=INTEGER},
+      mark5 = #{mark5,jdbcType=INTEGER}
+    where signId = #{signid,jdbcType=INTEGER}
+  </update>
+</mapper>

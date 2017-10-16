@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.job.dao.TrecruitMapper" >
+  <resultMap id="BaseResultMap" type="com.job.model.Trecruit" >
+    <id column="recruitId" property="recruitid" jdbcType="INTEGER" />
+    <result column="companyId" property="companyid" jdbcType="INTEGER" />
+    <result column="jobName" property="jobname" jdbcType="VARCHAR" />
+    <result column="salary" property="salary" jdbcType="VARCHAR" />
+    <result column="welfare" property="welfare" jdbcType="VARCHAR" />
+    <result column="jobDescribe" property="jobdescribe" jdbcType="VARCHAR" />
+    <result column="workAddr" property="workaddr" jdbcType="VARCHAR" />
+    <result column="workReq" property="workreq" jdbcType="VARCHAR" />
+    <result column="eduReq" property="edureq" jdbcType="VARCHAR" />
+    <result column="workType" property="worktype" jdbcType="VARCHAR" />
+    <result column="pubtime" property="pubtime" jdbcType="TIMESTAMP" />
+    <association property="tfirmuserInAcc" javaType="com.job.model.Tfirmuser">
+      <id column="companyId" property="companyid" jdbcType="INTEGER" />
+      <result column="companyName" property="companyname" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    recruitId, companyId, jobName, salary, welfare, jobDescribe, workAddr, workReq, eduReq, 
+    workType, pubtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_recruit
+    where recruitId = #{recruitid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from property_recruit
+    where recruitId = #{recruitid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.job.model.Trecruit" >
+    insert into property_recruit (recruitId, companyId, jobName, 
+      salary, welfare, jobDescribe, 
+      workAddr, workReq, eduReq, 
+      workType, pubtime)
+    values (#{recruitid,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}, #{jobname,jdbcType=VARCHAR}, 
+      #{salary,jdbcType=VARCHAR}, #{welfare,jdbcType=VARCHAR}, #{jobdescribe,jdbcType=VARCHAR}, 
+      #{workaddr,jdbcType=VARCHAR}, #{workreq,jdbcType=VARCHAR}, #{edureq,jdbcType=VARCHAR}, 
+      #{worktype,jdbcType=VARCHAR}, #{pubtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.job.model.Trecruit" >
+    insert into property_recruit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recruitid != null" >
+        recruitId,
+      </if>
+      <if test="companyid != null" >
+        companyId,
+      </if>
+      <if test="jobname != null" >
+        jobName,
+      </if>
+      <if test="salary != null" >
+        salary,
+      </if>
+      <if test="welfare != null" >
+        welfare,
+      </if>
+      <if test="jobdescribe != null" >
+        jobDescribe,
+      </if>
+      <if test="workaddr != null" >
+        workAddr,
+      </if>
+      <if test="workreq != null" >
+        workReq,
+      </if>
+      <if test="edureq != null" >
+        eduReq,
+      </if>
+      <if test="worktype != null" >
+        workType,
+      </if>
+      <if test="pubtime != null" >
+        pubtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recruitid != null" >
+        #{recruitid,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null" >
+        #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="jobname != null" >
+        #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="welfare != null" >
+        #{welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="jobdescribe != null" >
+        #{jobdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="workaddr != null" >
+        #{workaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="workreq != null" >
+        #{workreq,jdbcType=VARCHAR},
+      </if>
+      <if test="edureq != null" >
+        #{edureq,jdbcType=VARCHAR},
+      </if>
+      <if test="worktype != null" >
+        #{worktype,jdbcType=VARCHAR},
+      </if>
+      <if test="pubtime != null" >
+        #{pubtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.model.Trecruit" >
+    update property_recruit
+    <set >
+      <if test="companyid != null" >
+        companyId = #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="jobname != null" >
+        jobName = #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        salary = #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="welfare != null" >
+        welfare = #{welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="jobdescribe != null" >
+        jobDescribe = #{jobdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="workaddr != null" >
+        workAddr = #{workaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="workreq != null" >
+        workReq = #{workreq,jdbcType=VARCHAR},
+      </if>
+      <if test="edureq != null" >
+        eduReq = #{edureq,jdbcType=VARCHAR},
+      </if>
+      <if test="worktype != null" >
+        workType = #{worktype,jdbcType=VARCHAR},
+      </if>
+      <if test="pubtime != null" >
+        pubtime = #{pubtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where recruitId = #{recruitid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.job.model.Trecruit" >
+    update property_recruit
+    set companyId = #{companyid,jdbcType=INTEGER},
+      jobName = #{jobname,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=VARCHAR},
+      welfare = #{welfare,jdbcType=VARCHAR},
+      jobDescribe = #{jobdescribe,jdbcType=VARCHAR},
+      workAddr = #{workaddr,jdbcType=VARCHAR},
+      workReq = #{workreq,jdbcType=VARCHAR},
+      eduReq = #{edureq,jdbcType=VARCHAR},
+      workType = #{worktype,jdbcType=VARCHAR},
+      pubtime = #{pubtime,jdbcType=TIMESTAMP}
+    where recruitId = #{recruitid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAllRecruit" resultMap="BaseResultMap">
+    select recruitId, property_recruit.companyId, jobName,
+    salary, welfare, jobDescribe,
+    workAddr, workReq, eduReq,
+    workType, pubtime, property_firmuser.companyname as companyName
+    from property_recruit,property_firmuser
+    WHERE property_recruit.companyId=property_firmuser.companyId
+  </select>
+
+  <insert id="addrecruit" parameterType="com.job.model.Trecruit" >
+    insert into property_recruit (recruitId, companyId, jobName,
+    salary, welfare, jobDescribe,
+    workAddr, workReq, eduReq,
+    workType, pubtime)
+    values (#{recruitid,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}, #{jobname,jdbcType=VARCHAR},
+    #{salary,jdbcType=VARCHAR}, #{welfare,jdbcType=VARCHAR}, #{jobdescribe,jdbcType=VARCHAR},
+    #{workaddr,jdbcType=VARCHAR}, #{workreq,jdbcType=VARCHAR}, #{edureq,jdbcType=VARCHAR},
+    #{worktype,jdbcType=VARCHAR}, #{pubtime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <select id="selectByRecruitId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_recruit
+    where recruitId = #{recruitid,jdbcType=INTEGER}
+  </select>
+
+  <!--根据公司ID查出所有招聘信息-->
+  <select id="selectByCompanyId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_recruit
+    where companyId = #{companyid,jdbcType=INTEGER}
+  </select>
+
+  <select id="queryJobByUser" resultMap="BaseResultMap" >
+    SELECT property_firmuser.companyName AS companyName ,property_recruit.salary,property_recruit.workAddr,
+    property_recruit.workReq,property_recruit.eduReq,property_recruit.pubtime
+    FROM property_firmuser,property_recruit
+    WHERE property_firmuser.companyId=property_recruit.companyId
+    AND (property_firmuser.companyName LIKE CONCAT('%',#{jobName},'%') OR property_recruit.jobName LIKE CONCAT('%',#{jobName},'%'))
+    AND property_recruit.workAddr LIKE CONCAT('%',#{workAddr},'%')
+  </select>
+
+
+  <!-- 更新recruit信息-->
+  <update id="updateByRecruitid" parameterType="com.job.model.Trecruit" >
+    update property_recruit
+    <set >
+      <if test="companyid != null" >
+        companyId = #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="jobname != null" >
+        jobName = #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        salary = #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="welfare != null" >
+        welfare = #{welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="jobdescribe != null" >
+        jobDescribe = #{jobdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="workaddr != null" >
+        workAddr = #{workaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="workreq != null" >
+        workReq = #{workreq,jdbcType=VARCHAR},
+      </if>
+      <if test="edureq != null" >
+        eduReq = #{edureq,jdbcType=VARCHAR},
+      </if>
+      <if test="worktype != null" >
+        workType = #{worktype,jdbcType=VARCHAR},
+      </if>
+      <if test="pubtime != null" >
+        pubtime = #{pubtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where recruitId = #{recruitid,jdbcType=INTEGER}
+  </update>
+
+  <!--删除招聘信息-->
+  <delete id="deleteByRecruitId" parameterType="java.lang.Integer" >
+    delete from property_recruit
+    where recruitId = #{recruitid,jdbcType=INTEGER}
+  </delete>
+
+</mapper>

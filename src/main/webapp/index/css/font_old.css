@@ -1,0 +1,100 @@
+span
+{
+	font-family: "微软雅黑";
+    font-size: 12px;
+    font-weight: bold;
+    font-style: inherit;
+    font-style: normal;
+    color: grey;
+    float:right; 
+    text-align:right;
+}
+span1
+{
+	font-family: "微软雅黑";
+    font-size: 14px;
+    font-weight: bold;
+    font-style: inherit;
+    font-style: normal;
+    color: grey;	
+    
+}
+span2
+{
+	font-family: "微软雅黑";
+    font-size: 14px;
+    font-weight: bold;
+    font-style: inherit;
+    font-style: normal;
+    color: red;
+    float:right; 
+    text-align:right;
+    
+    
+}
+span3
+{
+	font-family: "微软雅黑";
+    font-size: 12px;
+    font-weight: bold;
+    font-style: inherit;
+    font-style: normal;
+    color: grey;
+}
+#divcss5
+{
+	margin:10px auto
+}
+#divcss5 img
+{ 
+	border-radius:50%
+} 
+#serch
+{
+	
+}
+#search input
+{
+	text-align: left;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+.nav {
+    background: white;
+    padding: 10px 0 6px 0;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.nav ul {
+    height: 0px;
+}
+.nav ul li {
+    float: left;
+    width: 20%;
+    text-align: center;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+.nav ul li span img{
+    display: block;
+    color: black;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    line-height: 20px;
+    text-align: center;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-weight: normal;
+}
+
+

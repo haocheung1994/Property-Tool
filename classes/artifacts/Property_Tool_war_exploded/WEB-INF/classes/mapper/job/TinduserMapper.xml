@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.job.dao.TinduserMapper" >
+  <resultMap id="BaseResultMap" type="com.job.model.Tinduser" >
+    <id column="personId" property="personid" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="personName" property="personname" jdbcType="VARCHAR" />
+    <result column="birthTime" property="birthtime" jdbcType="TIMESTAMP" />
+    <result column="personSex" property="personsex" jdbcType="VARCHAR" />
+    <result column="schoolName" property="schoolname" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="personCity" property="personcity" jdbcType="VARCHAR" />
+    <result column="personTel" property="persontel" jdbcType="VARCHAR" />
+    <result column="personEmail" property="personemail" jdbcType="VARCHAR" />
+    <result column="workYear" property="workyear" jdbcType="VARCHAR" />
+    <result column="expectJob" property="expectjob" jdbcType="VARCHAR" />
+    <result column="workType" property="worktype" jdbcType="VARCHAR" />
+    <result column="expectCity" property="expectcity" jdbcType="VARCHAR" />
+    <result column="expectSalary" property="expectsalary" jdbcType="VARCHAR" />
+    <result column="otherInf" property="otherinf" jdbcType="VARCHAR" />
+    <result column="wechatId" property="wechatid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    personId, userId, personName, birthTime, personSex, schoolName, major, personCity,
+    personTel, personEmail, workYear, expectJob, workType, expectCity, expectSalary,
+    otherInf, wechatId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_induser
+    where personId = #{personid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from property_induser
+    where personId = #{personid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.job.model.Tinduser" >
+    insert into property_induser (personId, userId, personName,
+    birthTime, personSex, schoolName,
+    major, personCity, personTel,
+    personEmail, workYear, expectJob,
+    workType, expectCity, expectSalary,
+    otherInf, wechatId)
+    values (#{personid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{personname,jdbcType=VARCHAR},
+    #{birthtime,jdbcType=TIMESTAMP}, #{personsex,jdbcType=VARCHAR}, #{schoolname,jdbcType=VARCHAR},
+    #{major,jdbcType=VARCHAR}, #{personcity,jdbcType=VARCHAR}, #{persontel,jdbcType=VARCHAR},
+    #{personemail,jdbcType=VARCHAR}, #{workyear,jdbcType=VARCHAR}, #{expectjob,jdbcType=VARCHAR},
+    #{worktype,jdbcType=VARCHAR}, #{expectcity,jdbcType=VARCHAR}, #{expectsalary,jdbcType=VARCHAR},
+    #{otherinf,jdbcType=VARCHAR}, #{wechatid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.job.model.Tinduser" >
+    insert into property_induser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="personid != null" >
+        personId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="personname != null" >
+        personName,
+      </if>
+      <if test="birthtime != null" >
+        birthTime,
+      </if>
+      <if test="personsex != null" >
+        personSex,
+      </if>
+      <if test="schoolname != null" >
+        schoolName,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="personcity != null" >
+        personCity,
+      </if>
+      <if test="persontel != null" >
+        personTel,
+      </if>
+      <if test="personemail != null" >
+        personEmail,
+      </if>
+      <if test="workyear != null" >
+        workYear,
+      </if>
+      <if test="expectjob != null" >
+        expectJob,
+      </if>
+      <if test="worktype != null" >
+        workType,
+      </if>
+      <if test="expectcity != null" >
+        expectCity,
+      </if>
+      <if test="expectsalary != null" >
+        expectSalary,
+      </if>
+      <if test="otherinf != null" >
+        otherInf,
+      </if>
+      <if test="wechatid != null" >
+        wechatId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="personid != null" >
+        #{personid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="personname != null" >
+        #{personname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthtime != null" >
+        #{birthtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personsex != null" >
+        #{personsex,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolname != null" >
+        #{schoolname,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="personcity != null" >
+        #{personcity,jdbcType=VARCHAR},
+      </if>
+      <if test="persontel != null" >
+        #{persontel,jdbcType=VARCHAR},
+      </if>
+      <if test="personemail != null" >
+        #{personemail,jdbcType=VARCHAR},
+      </if>
+      <if test="workyear != null" >
+        #{workyear,jdbcType=VARCHAR},
+      </if>
+      <if test="expectjob != null" >
+        #{expectjob,jdbcType=VARCHAR},
+      </if>
+      <if test="worktype != null" >
+        #{worktype,jdbcType=VARCHAR},
+      </if>
+      <if test="expectcity != null" >
+        #{expectcity,jdbcType=VARCHAR},
+      </if>
+      <if test="expectsalary != null" >
+        #{expectsalary,jdbcType=VARCHAR},
+      </if>
+      <if test="otherinf != null" >
+        #{otherinf,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatid != null" >
+        #{wechatid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.model.Tinduser" >
+    update property_induser
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="personname != null" >
+        personName = #{personname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthtime != null" >
+        birthTime = #{birthtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personsex != null" >
+        personSex = #{personsex,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolname != null" >
+        schoolName = #{schoolname,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="personcity != null" >
+        personCity = #{personcity,jdbcType=VARCHAR},
+      </if>
+      <if test="persontel != null" >
+        personTel = #{persontel,jdbcType=VARCHAR},
+      </if>
+      <if test="personemail != null" >
+        personEmail = #{personemail,jdbcType=VARCHAR},
+      </if>
+      <if test="workyear != null" >
+        workYear = #{workyear,jdbcType=VARCHAR},
+      </if>
+      <if test="expectjob != null" >
+        expectJob = #{expectjob,jdbcType=VARCHAR},
+      </if>
+      <if test="worktype != null" >
+        workType = #{worktype,jdbcType=VARCHAR},
+      </if>
+      <if test="expectcity != null" >
+        expectCity = #{expectcity,jdbcType=VARCHAR},
+      </if>
+      <if test="expectsalary != null" >
+        expectSalary = #{expectsalary,jdbcType=VARCHAR},
+      </if>
+      <if test="otherinf != null" >
+        otherInf = #{otherinf,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatid != null" >
+        wechatId = #{wechatid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where personId = #{personid,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.job.model.Tinduser" >
+    update property_induser
+    set userId = #{userid,jdbcType=INTEGER},
+    personName = #{personname,jdbcType=VARCHAR},
+    birthTime = #{birthtime,jdbcType=TIMESTAMP},
+    personSex = #{personsex,jdbcType=VARCHAR},
+    schoolName = #{schoolname,jdbcType=VARCHAR},
+    major = #{major,jdbcType=VARCHAR},
+    personCity = #{personcity,jdbcType=VARCHAR},
+    personTel = #{persontel,jdbcType=VARCHAR},
+    personEmail = #{personemail,jdbcType=VARCHAR},
+    workYear = #{workyear,jdbcType=VARCHAR},
+    expectJob = #{expectjob,jdbcType=VARCHAR},
+    workType = #{worktype,jdbcType=VARCHAR},
+    expectCity = #{expectcity,jdbcType=VARCHAR},
+    expectSalary = #{expectsalary,jdbcType=VARCHAR},
+    otherInf = #{otherinf,jdbcType=VARCHAR},
+    wechatId = #{wechatid,jdbcType=VARCHAR}
+    where personId = #{personid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByUserid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_induser
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+
+  <select id="getPersonidByUserid" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select personId
+    from property_induser
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+
+
+  <!--简历查询之一：基本信息部分-->
+  <select id="BaseInfoByPersonid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_induser
+    where personId = #{personid,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="selectResumeList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from property_induser
+    /*limit 0,10*/
+  </select>
+
+  <!--编辑基本信息-->
+  <update id="updateBaseInfo" parameterType="com.job.model.Tinduser" >
+    update property_induser
+    <set >
+      <if test="personname != null" >
+        personName = #{personname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthtime != null" >
+        birthTime = #{birthtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personsex != null" >
+        personSex = #{personsex,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolname != null" >
+        schoolName = #{schoolname,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="personcity != null" >
+        personCity = #{personcity,jdbcType=VARCHAR},
+      </if>
+      <if test="persontel != null" >
+        personTel = #{persontel,jdbcType=VARCHAR},
+      </if>
+      <if test="personemail != null" >
+        personEmail = #{personemail,jdbcType=VARCHAR},
+      </if>
+      <if test="workyear != null" >
+        workYear = #{workyear,jdbcType=VARCHAR},
+      </if>
+      <if test="otherinf != null" >
+        otherInf = #{otherinf,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  userId = #{userid,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+</mapper>

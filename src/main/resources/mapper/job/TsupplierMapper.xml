@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.job.dao.TsupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.job.model.Tsupplier" >
+    <id column="supplierId" property="supplierid" jdbcType="INTEGER" />
+    <result column="supplierName" property="suppliername" jdbcType="VARCHAR" />
+    <result column="supType" property="suptype" jdbcType="INTEGER" />
+    <result column="supTel" property="suptel" jdbcType="VARCHAR" />
+    <result column="supCity" property="supcity" jdbcType="VARCHAR" />
+    <result column="supAddress" property="supaddress" jdbcType="VARCHAR" />
+    <result column="clickNum" property="clicknum" jdbcType="INTEGER" />
+    <result column="policyInfo" property="policyinfo" jdbcType="VARCHAR" />
+    <association property="supTypeInAcc" javaType="com.job.model.Tsuptype">
+      <id column="supType" property="suptype" jdbcType="INTEGER" />
+      <result column="supTypeName" property="suptypename" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    supplierId, supplierName, supType, supTel, supCity, supAddress, clickNum, policyInfo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from property_supplier
+    where supplierId = #{supplierid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from property_supplier
+    where supplierId = #{supplierid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.job.model.Tsupplier" >
+    insert into property_supplier (supplierId, supplierName, supType, 
+      supTel, supCity, supAddress, 
+      clickNum, policyInfo)
+    values (#{supplierid,jdbcType=INTEGER}, #{suppliername,jdbcType=VARCHAR}, #{suptype,jdbcType=INTEGER}, 
+      #{suptel,jdbcType=VARCHAR}, #{supcity,jdbcType=VARCHAR}, #{supaddress,jdbcType=VARCHAR}, 
+      #{clicknum,jdbcType=INTEGER}, #{policyinfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.job.model.Tsupplier" >
+    insert into property_supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="supplierid != null" >
+        supplierId,
+      </if>
+      <if test="suppliername != null" >
+        supplierName,
+      </if>
+      <if test="suptype != null" >
+        supType,
+      </if>
+      <if test="suptel != null" >
+        supTel,
+      </if>
+      <if test="supcity != null" >
+        supCity,
+      </if>
+      <if test="supaddress != null" >
+        supAddress,
+      </if>
+      <if test="clicknum != null" >
+        clickNum,
+      </if>
+      <if test="policyinfo != null" >
+        policyInfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="supplierid != null" >
+        #{supplierid,jdbcType=INTEGER},
+      </if>
+      <if test="suppliername != null" >
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="suptype != null" >
+        #{suptype,jdbcType=INTEGER},
+      </if>
+      <if test="suptel != null" >
+        #{suptel,jdbcType=VARCHAR},
+      </if>
+      <if test="supcity != null" >
+        #{supcity,jdbcType=VARCHAR},
+      </if>
+      <if test="supaddress != null" >
+        #{supaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clicknum != null" >
+        #{clicknum,jdbcType=INTEGER},
+      </if>
+      <if test="policyinfo != null" >
+        #{policyinfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.model.Tsupplier" >
+    update property_supplier
+    <set >
+      <if test="suppliername != null" >
+        supplierName = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="suptype != null" >
+        supType = #{suptype,jdbcType=INTEGER},
+      </if>
+      <if test="suptel != null" >
+        supTel = #{suptel,jdbcType=VARCHAR},
+      </if>
+      <if test="supcity != null" >
+        supCity = #{supcity,jdbcType=VARCHAR},
+      </if>
+      <if test="supaddress != null" >
+        supAddress = #{supaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clicknum != null" >
+        clickNum = #{clicknum,jdbcType=INTEGER},
+      </if>
+      <if test="policyinfo != null" >
+        policyInfo = #{policyinfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where supplierId = #{supplierid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.job.model.Tsupplier" >
+    update property_supplier
+    set supplierName = #{suppliername,jdbcType=VARCHAR},
+      supType = #{suptype,jdbcType=INTEGER},
+      supTel = #{suptel,jdbcType=VARCHAR},
+      supCity = #{supcity,jdbcType=VARCHAR},
+      supAddress = #{supaddress,jdbcType=VARCHAR},
+      clickNum = #{clicknum,jdbcType=INTEGER},
+      policyInfo = #{policyinfo,jdbcType=VARCHAR}
+    where supplierId = #{supplierid,jdbcType=INTEGER}
+  </update>
+
+  <!--hao-->
+  <select id="selectBySuptype" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_supplier
+    where supType = #{suptype,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySupplierId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_supplier
+    where supplierId = #{supplierid,jdbcType=INTEGER}
+  </select>
+
+  <update id="updateClickNum" parameterType="com.job.model.Tsupplier" >
+    update property_supplier
+    set  clickNum = #{clicknum,jdbcType=INTEGER}
+    where supplierId = #{supplierid,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="SearchByElement" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from property_supplier
+    where supplierName LIKE CONCAT(CONCAT('%', #{search}), '%') || supType LIKE CONCAT(CONCAT('%', #{search}), '%') || supCity LIKE CONCAT(CONCAT('%', #{search}), '%')
+  </select>
+
+  <select id="selectAllApply" resultMap="BaseResultMap" >
+    select
+    supplierId, supplierName, property_suptype.supTypeName, supTel, supCity, supAddress, clickNum, policyInfo
+    from property_supplier,property_suptype
+    WHERE property_supplier.supType=property_suptype.supType
+  </select>
+
+
+</mapper>

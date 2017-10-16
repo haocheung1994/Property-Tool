@@ -1,0 +1,222 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/5/31
+  Time: 16:49
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <link href="css/mui.min.css" rel="stylesheet" />
+  <link href="iconfont/iconfont.css" rel="stylesheet" />
+</head>
+
+<body>
+<script src="js/mui.min.js"></script>
+<script type="text/javascript">
+  mui.init()
+</script>
+<!--
+    标题栏
+-->
+<link href="css/position_info.css" rel="stylesheet"/>
+<header class="mui-bar mui-bar-nav" >
+  <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+  <h1 class="mui-title">职位详情</h1>
+  <a id="info" class="mui-icon iconfont icon-caidan mui-pull-right" style="color: white;"></a>
+</header>
+<!--
+    招聘岗位
+-->
+<div class="mui-content">
+  <ul class="mui-table-view" style="margin-left: 10px;margin-right: 10px;margin-bottom: 10px;">
+    <link href="css/font.css" rel="stylesheet" />
+    <li class="mui-table-view-cell mui-media">
+      <a href="javascript:;">
+        <div class="mui-media-body">
+          <span2>3.5千-4千</span2>
+          <p class="mui-ellipsis"><span1>管理人员</span1></p>
+          <p class="mui-ellipsis"><span3>南京万科物业管理有限公司</span3></p>
+          <span3 class="mui-active" style="margin-left: auto;">徐州 经验不限</span3>
+          <span4 class="mui-active" >5-17</span4>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <!--
+      工作地点
+  -->
+  <ul class="mui-table-view" style="margin-left: 10px;margin-right: 10px;margin-bottom: 10px;">
+    <link href="css/font.css" rel="stylesheet" />
+    <li class="mui-table-view-cell mui-media">
+      <a href="javascript:;">
+        <div class="mui-media-body">
+          <!--<span2>3.5千-4千</span2>-->
+          <p class="mui-ellipsis"><span1>工作地址</span1></p></br>
+          <!--<p class="mui-ellipsis"><span3>南京万科物业管理有限公司</span3></p>-->
+          <a class="mui-tab-item">
+            <span3 class="mui-icon iconfont icon-site" style="margin-left: auto;"></span3>
+            <span3>上班地点：徐州高铁站附件</span3>
+          </a>
+          <a href="add_details.html" class="mui-icon mui-icon-arrowright mui-pull-right" style="color: #000000;"></a>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <!--
+      职位描述
+  -->
+  <ul class="mui-table-view" style="margin-left: 10px;margin-right: 10px;margin-bottom: 10px;">
+    <link href="css/font.css" rel="stylesheet" />
+    <li class="mui-table-view-cell mui-media">
+      <a href="javascript:;">
+        <div class="mui-media-body">
+          <!--<span2>3.5千-4千</span2>-->
+          <p class="mui-ellipsis"><span1>职位描述</span1></p></br>
+          <p>
+            岗位描述：</br>
+            1、负责系统后台研发与维护，实现产品需求；</br>
+            2、配合开发工程师完成产品功能的实现；</br>
+            3、编写高质量的代码，设计文档，单元测试；</br>
+            任职资格：</br>
+            1、熟悉MongoDB, Elasticsearch 等Web技术优先；</br>
+            2、具备良好的软件开发基础，能熟练使用一种数据库；</br>
+          </p>
+          <!--<p class="mui-ellipsis"><span3>南京万科物业管理有限公司</span3></p>-->
+          <!--<a class="mui-tab-item">
+          <span3 class="mui-icon iconfont icon-shangcheng" style="margin-left: auto;"></span3>
+          <span3>徐州</span3>
+          </a>
+         <span4 class="mui-active" >5-17</span4>
+     </div>-->
+      </a>
+    </li>
+  </ul>
+
+  <!--
+      职位特点
+  -->
+  <ul class="mui-table-view" style="margin-left: 10px;margin-right: 10px;margin-bottom: 10px;">
+    <link href="css/font.css" rel="stylesheet" />
+    <li class="mui-table-view-cell mui-media">
+      <a href="javascript:;">
+        <div class="mui-media-body">
+          <!--<span2>3.5千-4千</span2>-->
+          <p class="mui-ellipsis"><span1>职位特点</span1></p></br>
+          <p class="mui-ellipsis"><a>&nbsp;五险一金&nbsp;</a>
+            <a>&nbsp;&nbsp;年底双薪&nbsp;</a>
+            <a>&nbsp;&nbsp;年底奖金&nbsp;</a>
+            <a>&nbsp;&nbsp;交通补助&nbsp;</a></br>
+            <a>&nbsp;通讯补助&nbsp;</a>
+            <a>&nbsp;&nbsp;带薪年假&nbsp;</a>
+            <a>&nbsp;&nbsp;定期体检&nbsp;</a>
+            <a>&nbsp;&nbsp;员工旅游&nbsp;</a>
+          </p>
+          <!--<p class="mui-ellipsis"><span3>南京万科物业管理有限公司</span3></p>-->
+          <!--<a class="mui-tab-item">
+          <span3 class="mui-icon iconfont icon-shangcheng" style="margin-left: auto;"></span3>
+          <span3>徐州</span3>
+          </a>
+         <span4 class="mui-active" >5-17</span4>-->
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <!--
+      公司简介
+  -->
+  <ul class="mui-table-view" style="margin-left: 10px;margin-right: 10px;margin-bottom: 10px;">
+    <li class="mui-table-view-cell mui-media">
+      <a href="javascript:;">
+        <div id="divcss5">
+          <img class="mui-media-object mui-pull-left" src="img/test2.jpg">
+        </div>
+        <div class="mui-media-body">
+          <!--<span2>3.5千-4千</span2>-->
+          <p class="mui-ellipsis"><span style="font-family: '微软雅黑'; font-size: 16px; color: #000000;">广州市宁骏物业管理有限公司徐州分公司</span></p>
+          <p class="mui-ellipsis"><span style="font-family: '微软雅黑'; font-size: 13px;">物业管理/商业中心</span></p>
+          <p class="mui-ellipsis"><span class="mui-active" style="margin-left: auto; font-family: '微软雅黑'; font-size: 13px;">500-999人|上市公司</span></p>
+          <!--<span4 class="mui-active" >5-17</span4>-->
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <!--
+      相似职位
+  -->
+  <div class="mui-media-body" style="margin-top: 10px; margin-left: 10px;margin-bottom: 10px;">
+    <p><span style="font-family: '微软雅黑'; font-size: 18px;">相似职业</span></p>
+  </div>
+
+  <ul class="mui-table-view" style="margin-left: 10px; margin-right: 10px;margin-bottom: 10px;">
+    <li class="mui-table-view-cell mui-media">
+      <a href="javascript:;">
+        <div class="mui-media-body">
+          <span2>3.5千-4千</span2>
+          <p class="mui-ellipsis"><span1>项目经理</span1></p>
+          <p class="mui-ellipsis"><span3>南京万科物业管理有限公司</span3></p>
+          <span3 class="mui-active" style="margin-left: auto;">徐州</span3>
+          <span4 class="mui-active" >5-17</span4>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <ul class="mui-table-view" style="margin-left: 10px; margin-right: 10px;margin-bottom: 10px;">
+    <li class="mui-table-view-cell mui-media">
+      <a href="javascript:;">
+        <div class="mui-media-body">
+          <span2>3.5千-4千</span2>
+          <p class="mui-ellipsis"><span1>项目经理</span1></p>
+          <p class="mui-ellipsis"><span3>南京万科物业管理有限公司</span3></p>
+          <span3 class="mui-active" style="margin-left: auto;">徐州</span3>
+          <span4 class="mui-active" >5-17</span4>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <ul class="mui-table-view" style="margin-left: 10px; margin-right: 10px;margin-bottom: 10px;">
+    <li class="mui-table-view-cell mui-media">
+      <a href="javascript:;">
+        <div class="mui-media-body">
+          <span2>3.5千-4千</span2>
+          <p class="mui-ellipsis"><span1>项目经理</span1></p>
+          <p class="mui-ellipsis"><span3>南京万科物业管理有限公司</span3></p>
+          <span3 class="mui-active" style="margin-left: auto;">徐州</span3>
+          <span4 class="mui-active" >5-17</span4>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <ul class="mui-table-view" style="margin-left: 10px; margin-right: 10px;margin-bottom: 10px;">
+    <li class="mui-table-view-cell mui-media">
+      <a href="javascript:;">
+        <div class="mui-media-body">
+          <span2>3.5千-4千</span2>
+          <p class="mui-ellipsis"><span1>项目经理</span1></p>
+          <p class="mui-ellipsis"><span3>南京万科物业管理有限公司</span3></p>
+          <span3 class="mui-active" style="margin-left: auto;">徐州</span3>
+          <span4 class="mui-active" >5-17</span4>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+</div>
+
+<ul class="mui-table-view" style="margin-left: 10px;margin-right: 10px;margin-bottom: 10px;">
+  <button type="button" class="mui-btn mui-btn-blue mui-btn-block">投递简历</button>
+</ul>
+
+</body>
+
+</html>

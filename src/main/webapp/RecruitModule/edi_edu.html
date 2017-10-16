@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+	</head>
+
+	<body>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		
+		<!--
+			标题栏
+		-->
+		<link href="css/position_info.css" rel="stylesheet"/>
+		<header class="mui-bar mui-bar-nav" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">编辑教育经历</h1>
+		    <span id="dingwei" class="mui-icon iconfont icon-baocun mui-pull-right" style="color: white;"></span></br>
+		</header>
+		
+		<!--
+			编辑内容
+		-->
+		<div class="mui-content" style="margin-top: 10px;">
+			<div class="mui-input-row">
+		       <span class="icon-circle  icon iconfont icon-bianji" style="color: dodgerblue;"></span>
+			   <span ><input type="text" placeholder="学校名称" style="border:0px;"></span>
+		    </div>
+		    
+		    <div class="mui-input-row">
+		       <span class="icon-circle  icon iconfont icon-bianji" style="color: dodgerblue;"></span>
+			   <span ><input type="text" placeholder="所学专业" style="border:0px;"></span>
+		    </div>
+		    
+		    <div class="mui-input-row">
+		       <span id="graduate_time" class="icon-circle  icon iconfont icon-bianji" style="color: dodgerblue;"></span>
+			   <span id="selected_graduate_time"><input type="text" placeholder="毕业年月" style="border:0px;"></span>
+		    </div>
+		    <script>
+		    	        var gradutePicker = new mui.DtPicker({
+		        			type:'month',
+		        			beginDate: new Date(1970,01),//设置开始日期
+		        			endDate: new Date(2020,12),//设置结束日期
+		        		});
+		        		var graduteButton = document.getElementById("graduate_time");
+		        		var graduteResult = document.getElementById("selected_graduate_time");
+		        		graduteButton.addEventListener('tap',function(event){
+		        			gradutePicker.show(function(items){
+		        				graduteResult.innerText = items;
+		        				/*console.log(nianfenPicker.innerText);*/
+		        				console.log(items);
+		        			});
+		        		},false);
+		    </script>
+		    
+		    <div class="mui-input-row">
+		       <span id="education"class="icon-circle  icon iconfont icon-bianji" style="color: dodgerblue;"></span>
+			   <span id="selected_education"><input type="text" placeholder="学历" style="border:0px;"></span>
+		    </div>
+		    
+		    <script>
+		  	    var educationButton = document.getElementById("education");
+		  	    var result_education = document.getElementById("selected_education");
+		  	    var educationPicker = new mui.PopPicker();
+		  	    educationPicker.setData([{
+		  	    	value:"1",
+		  	    	text:"本科"
+		  	    },{
+		  	    	value:"2",
+		  	    	text:"大专及以下"
+		  	    },{
+		  	    	value:"3",
+		  	    	text:"硕士"
+		  	    },{
+		  	    	value:"4",
+		  	    	text:"博士"
+		  	    },{
+		  	    	value:"5",
+		  	    	text:"其他"
+		  	    }]);
+		  	    educationButton.addEventListener('tap',function(event){
+		  	        educationPicker.show(function(item){
+		  	    	result_education.innerText = item[0].text;
+		        				/*console.log(nianfenPicker.innerText);*/
+		        	console.log(item[0].text);
+		  	    });
+		  	    },false);
+		  </script>
+		
+		</div>
+	</body>
+
+	<ul class="mui-table-view" style="margin-left: 10px;margin-right: 10px;margin-bottom: 10px;">
+	 	<a href="add_edu.html">
+	 	<button type="button" class="mui-btn mui-btn-blue mui-btn-block">删除此教育经历</button>
+	 	</a>
+	</ul>
+
+</html>

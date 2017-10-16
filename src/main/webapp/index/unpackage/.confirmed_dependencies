@@ -1,0 +1,54 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/mui.indexedlist.css",
+			"js/mui.indexedlist.js"
+		]
+	},
+	"homepage.html": {
+		"resources": [
+			"css/homepage.css",
+			"js/mui.picker.js",
+			"img/土地信息.png",
+			"img/行业信息.png",
+			"css/mui.picker.css",
+			"citylist.html",
+			"css/Areas.css",
+			"js/city.data-3.js",
+			"img/商城.png",
+			"img/slider3.jpg",
+			"js/jquery1.9.1.min.js",
+			"js/mui.min.js",
+			"js/mui.poppicker.js",
+			"img/slider1.jpg",
+			"css/mui.min.css",
+			"iconfont/iconfont.woff",
+			"img/论坛.png",
+			"js/mui.js",
+			"img/招聘.png",
+			"css/mui.poppicker.css",
+			"img/slider2.jpg",
+			"iconfont/iconfont.css",
+			"js/jquery.cookie.js"
+		],
+		"refer": [
+			"citylist.html"
+		]
+	},
+	"citylist.html": {
+		"resources": [
+			"homepage.html",
+			"fonts/mui.ttf",
+			"css/mui.indexedlist.css",
+			"js/mui.indexedlist.js",
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"homepage.html"
+		]
+	}
+}

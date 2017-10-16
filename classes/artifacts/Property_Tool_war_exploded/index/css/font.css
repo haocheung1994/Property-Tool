@@ -1,0 +1,63 @@
+span4
+{
+	font-family: "微软雅黑";
+    font-size: 12px;
+    font-weight: bold;
+    font-style: inherit;
+    font-style: normal;
+    color: grey;
+    float:right; 
+    text-align:right;
+}
+span1
+{
+	font-family: "微软雅黑";
+    font-size: 14px;
+    font-weight: bold;
+    font-style: inherit;
+    font-style: normal;
+    color: grey;	
+    
+}
+span2
+{
+	font-family: "微软雅黑";
+    font-size: 14px;
+    font-weight: bold;
+    font-style: inherit;
+    font-style: normal;
+    color: red;
+    float:right; 
+    text-align:right;
+    
+    
+}
+span3
+{
+	font-family: "微软雅黑";
+    font-size: 12px;
+    font-weight: bold;
+    font-style: inherit;
+    font-style: normal;
+    color: grey;
+}
+#divcss5
+{
+	margin:10px auto
+}
+#divcss5 img
+{ 
+	border-radius:50%
+} 
+#serch
+{
+	
+}
+#search input
+{
+	text-align: left;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+

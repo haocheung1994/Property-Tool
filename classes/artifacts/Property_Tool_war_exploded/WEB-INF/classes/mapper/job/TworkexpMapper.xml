@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.job.dao.TworkexpMapper" >
+  <resultMap id="BaseResultMap" type="com.job.model.Tworkexp" >
+    <id column="workExpId" property="workexpid" jdbcType="INTEGER" />
+    <result column="personId" property="personid" jdbcType="INTEGER" />
+    <result column="companyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="jobName" property="jobname" jdbcType="VARCHAR" />
+    <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="workDuty" property="workduty" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    workExpId, personId, companyName, jobName, startTime, endTime, workDuty
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from property_workexp
+    where workExpId = #{workexpid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from property_workexp
+    where workExpId = #{workexpid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.job.model.Tworkexp" >
+    insert into property_workexp (workExpId, personId, companyName, 
+      jobName, startTime, endTime, 
+      workDuty)
+    values (#{workexpid,jdbcType=INTEGER}, #{personid,jdbcType=INTEGER}, #{companyname,jdbcType=VARCHAR}, 
+      #{jobname,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{workduty,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.job.model.Tworkexp" >
+    insert into property_workexp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workexpid != null" >
+        workExpId,
+      </if>
+      <if test="personid != null" >
+        personId,
+      </if>
+      <if test="companyname != null" >
+        companyName,
+      </if>
+      <if test="jobname != null" >
+        jobName,
+      </if>
+      <if test="starttime != null" >
+        startTime,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+      <if test="workduty != null" >
+        workDuty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workexpid != null" >
+        #{workexpid,jdbcType=INTEGER},
+      </if>
+      <if test="personid != null" >
+        #{personid,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="jobname != null" >
+        #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workduty != null" >
+        #{workduty,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.model.Tworkexp" >
+    update property_workexp
+    <set >
+      <if test="personid != null" >
+        personId = #{personid,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null" >
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="jobname != null" >
+        jobName = #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null" >
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workduty != null" >
+        workDuty = #{workduty,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where workExpId = #{workexpid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.job.model.Tworkexp" >
+    update property_workexp
+    set personId = #{personid,jdbcType=INTEGER},
+      companyName = #{companyname,jdbcType=VARCHAR},
+      jobName = #{jobname,jdbcType=VARCHAR},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      workDuty = #{workduty,jdbcType=VARCHAR}
+    where workExpId = #{workexpid,jdbcType=INTEGER}
+  </update>
+
+ <!-- STEP3:查询工作经历-->
+  <select id="workExpBypersonId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_workexp
+    where personId = #{personid,jdbcType=INTEGER}
+  </select>
+
+
+</mapper>

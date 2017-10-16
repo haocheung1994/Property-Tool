@@ -1,0 +1,23 @@
+header
+{
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+.mui-bar
+{
+	background-color: rgb(71,155,241);
+}
+.mui-action-back
+{
+	color: white;
+}
+.mui-ellipsis-5 
+{
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal!important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}

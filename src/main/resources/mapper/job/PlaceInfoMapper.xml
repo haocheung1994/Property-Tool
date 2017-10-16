@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.job.dao.PlaceInfoMapper" >
+    <resultMap id="BaseResultMap" type="com.job.model.PlaceInfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="region" property="region" jdbcType="VARCHAR" />
+        <result column="place" property="place" jdbcType="VARCHAR" />
+        <result column="totalarea" property="totalarea" jdbcType="VARCHAR" />
+        <result column="consplace" property="consplace" jdbcType="VARCHAR" />
+        <result column="propalce" property="propalce" jdbcType="VARCHAR" />
+        <result column="authpalce" property="authpalce" jdbcType="VARCHAR" />
+        <result column="plotratiolv" property="plotratiolv" jdbcType="VARCHAR" />
+        <result column="afforestlv" property="afforestlv" jdbcType="VARCHAR" />
+        <result column="businesslv" property="businesslv" jdbcType="VARCHAR" />
+        <result column="buildmd" property="buildmd" jdbcType="VARCHAR" />
+        <result column="astrictgd" property="astrictgd" jdbcType="VARCHAR" />
+        <result column="tosellxs" property="tosellxs" jdbcType="VARCHAR" />
+        <result column="tosellnx" property="tosellnx" jdbcType="VARCHAR" />
+        <result column="locationwz" property="locationwz" jdbcType="VARCHAR" />
+        <result column="placess" property="placess" jdbcType="VARCHAR" />
+        <result column="planyt" property="planyt" jdbcType="VARCHAR" />
+        <result column="dealstate" property="dealstate" jdbcType="VARCHAR" />
+        <result column="viejdf" property="viejdf" jdbcType="VARCHAR" />
+        <result column="qsritime" property="qsritime" jdbcType="VARCHAR" />
+        <result column="jzrqtime" property="jzrqtime" jdbcType="VARCHAR" />
+        <result column="cjrqtime" property="cjrqtime" jdbcType="VARCHAR" />
+        <result column="jydiplace" property="jydiplace" jdbcType="VARCHAR" />
+        <result column="qsjmoney" property="qsjmoney" jdbcType="VARCHAR" />
+        <result column="cjjmoney" property="cjjmoney" jdbcType="VARCHAR" />
+        <result column="lmdjmoney" property="lmdjmoney" jdbcType="VARCHAR" />
+        <result column="yjlv" property="yjlv" jdbcType="VARCHAR" />
+        <result column="tdgg" property="tdgg" jdbcType="VARCHAR" />
+        <result column="zxdhphone" property="zxdhphone" jdbcType="VARCHAR" />
+        <result column="bzjmoney" property="bzjmoney" jdbcType="VARCHAR" />
+        <result column="zxjjfdmoney" property="zxjjfdmoney" jdbcType="VARCHAR" />
+        <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+        <result column="ptext" property="ptext" jdbcType="VARCHAR" />
+        <result column="bianhao" property="bianhao" jdbcType="VARCHAR" />
+        <result column="lng" property="lng" jdbcType="VARCHAR" />
+        <result column="lat" property="lat" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+    id,region, place, totalarea,consplace,propalce,authpalce,plotratiolv,afforestlv,businesslv,buildmd,astrictgd,tosellxs,tosellnx,locationwz,placess,planyt,dealstate,viejdf,
+    qsritime,jzrqtime,cjrqtime,jydiplace,qsjmoney,cjjmoney,lmdjmoney,yjlv,tdgg,zxdhphone,bzjmoney,zxjjfdmoney,createtime,ptext,bianhao,lng,lat
+  </sql>
+
+    <insert id="insert" parameterType="com.job.model.PlaceInfo" >
+        insert into placeinfo (region, place, totalarea,consplace,propalce,authpalce,plotratiolv,afforestlv,businesslv,buildmd,astrictgd,tosellxs,tosellnx,locationwz,placess,planyt,dealstate,viejdf,
+        qsritime,jzrqtime,cjrqtime,jydiplace,qsjmoney,cjjmoney,lmdjmoney,yjlv,tdgg,zxdhphone,bzjmoney,zxjjfdmoney,createtime,ptext,bianhao)
+        values (#{region},#{place},#{totalarea},#{consplace},#{propalce},#{authpalce},#{plotratiolv},#{afforestlv},#{businesslv},#{buildmd},#{astrictgd},#{tosellxs},#{tosellnx},#{locationwz},#{placess},#{planyt},#{dealstate},#{viejdf},#{qsritime},#{jzrqtime},#{cjrqtime},#{jydiplace},#{qsjmoney},#{cjjmoney},#{lmdjmoney},
+        #{yjlv},#{tdgg},#{zxdhphone},#{bzjmoney},#{zxjjfdmoney},now(),#{ptext},#{bianhao})
+    </insert>
+
+    <!-- 查询民用土地信息 -->
+    <select id="selectmplace" resultMap="BaseResultMap" parameterType="String">
+        select <include refid="Base_Column_List"/> from placeinfo where ptext=1 and region like #{0} ORDER BY createtime DESC;
+    </select>
+
+    <!-- 查询商用土地信息 -->
+    <select id="selectsplace" resultMap="BaseResultMap" parameterType="String">
+        select <include refid="Base_Column_List"/> from placeinfo where ptext=2 and region like #{0} ORDER BY createtime DESC;
+    </select>
+
+    <!-- 根据id获取详细信息 -->
+    <select id="getplaceByid" resultMap="BaseResultMap" parameterType="String">
+        select <include refid="Base_Column_List"/> from placeinfo where id=#{0}
+    </select>
+
+    <!-- 查询全部的前十条数据 -->
+    <select id="selectplaces" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from placeinfo limit 10
+    </select>
+
+    <!-- 查询全部数据 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from placeinfo where 1=1
+    </select>
+
+    <!-- 查询全部数据 -->
+    <select id="selectAllStep" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select <include refid="Base_Column_List"/> from placeinfo where 1=1
+        limit #{start},#{end}
+    </select>
+
+    <!-- 区域和用途查询 -->
+    <select id="selectByPP" resultMap="BaseResultMap" parameterType="com.job.model.PlaceInfo">
+        select <include refid="Base_Column_List"/> from placeinfo where 1=1
+        <if test="place!=null and place!=''">
+            and region LIKE CONCAT('%',#{place},'%')
+        </if>
+        <if test="ptext!=null and ptext!=''">
+            and ptext=#{ptext}
+        </if>
+        ORDER BY createtime DESC
+    </select>
+
+    <delete id="deleteplace" parameterType="int">
+        delete from placeinfo where DATEDIFF(NOW(),DATE(createtime))<![CDATA[ >= ]]> #{0}
+    </delete>
+
+    <delete id="deleteplacebyid" parameterType="int">
+        delete from placeinfo where id=#{id}
+    </delete>
+
+    <select id="selectAllByfen" resultMap="BaseResultMap" parameterType="Integer">
+        select <include refid="Base_Column_List"></include> from placeinfo where 1=1 order by cjrqtime desc
+        limit #{0},#{1}
+    </select>
+
+
+    <select id="selectcount" resultType="Integer">
+ 	select count(*) from placeinfo where 1=1
+ </select>
+
+    <update id="updatePlace" parameterType="com.job.model.PlaceInfo">
+        UPDATE placeinfo SET lng = #{lng},lat=#{lat} WHERE id = #{id}
+    </update>
+
+
+</mapper>

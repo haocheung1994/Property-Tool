@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.job.dao.TapplyMapper" >
+  <resultMap id="BaseResultMap" type="com.job.model.Tapply" >
+    <id column="jobApplyId" property="jobapplyid" jdbcType="INTEGER" />
+    <result column="recruitId" property="recruitid" jdbcType="INTEGER" />
+    <result column="companyId" property="companyid" jdbcType="INTEGER" />
+    <result column="personId" property="personid" jdbcType="INTEGER" />
+    <result column="applyTime" property="applytime" jdbcType="TIMESTAMP" />
+    <association property="tinduserInAcc" javaType="com.job.model.Tinduser">
+      <id column="personId" property="personid" jdbcType="INTEGER" />
+      <result column="personName" property="personname" jdbcType="VARCHAR" />
+      <result column="personSex" property="personsex" jdbcType="VARCHAR" />
+      <result column="personCity" property="personcity" jdbcType="VARCHAR" />
+      <result column="expectSalary" property="expectsalary" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    jobApplyId, recruitId, companyId, personId, applyTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap"
+          parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from property_apply
+    where jobApplyId = #{jobapplyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from property_apply
+    where jobApplyId = #{jobapplyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.job.model.Tapply" >
+    insert into property_apply (jobApplyId, recruitId, companyId,
+    personId, applyTime)
+    values (#{jobapplyid,jdbcType=INTEGER}, #{recruitid,jdbcType=INTEGER}, #
+    {companyid,jdbcType=INTEGER},
+    #{personid,jdbcType=INTEGER}, #{applytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.job.model.Tapply" >
+    insert into property_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jobapplyid != null" >
+        jobApplyId,
+      </if>
+      <if test="recruitid != null" >
+        recruitId,
+      </if>
+      <if test="companyid != null" >
+        companyId,
+      </if>
+      <if test="personid != null" >
+        personId,
+      </if>
+      <if test="applytime != null" >
+        applyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jobapplyid != null" >
+        #{jobapplyid,jdbcType=INTEGER},
+      </if>
+      <if test="recruitid != null" >
+        #{recruitid,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null" >
+        #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="personid != null" >
+        #{personid,jdbcType=INTEGER},
+      </if>
+      <if test="applytime != null" >
+        #{applytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.model.Tapply" >
+    update property_apply
+    <set >
+      <if test="recruitid != null" >
+        recruitId = #{recruitid,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null" >
+        companyId = #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="personid != null" >
+        personId = #{personid,jdbcType=INTEGER},
+      </if>
+      <if test="applytime != null" >
+        applyTime = #{applytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where jobApplyId = #{jobapplyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.job.model.Tapply" >
+    update property_apply
+    set recruitId = #{recruitid,jdbcType=INTEGER},
+    companyId = #{companyid,jdbcType=INTEGER},
+    personId = #{personid,jdbcType=INTEGER},
+    applyTime = #{applytime,jdbcType=TIMESTAMP}
+    where jobApplyId = #{jobapplyid,jdbcType=INTEGER}
+  </update>
+
+  <!-- NewPart-->
+  <insert id="addApply" parameterType="com.job.model.Tapply" >
+    insert into property_apply (jobApplyId, recruitId, companyId,
+    personId, applyTime)
+    values (#{jobapplyid,jdbcType=INTEGER}, #{recruitid,jdbcType=INTEGER}, #{companyid},
+    #{personid,jdbcType=INTEGER}, #{applytime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <!--根据recruitID查询申请信息-->
+
+  <select id="selectApplyByRecruitId" resultMap="BaseResultMap"
+          parameterType="java.lang.Integer" >
+    select
+    jobApplyId, recruitId, companyId, property_apply.personId AS personId, applyTime,
+    property_induser.personName as personName,property_induser.personSex as personSex,
+    property_induser.personCity as personCity,property_induser.expectSalary as expectSalary,
+    property_induser.personId AS personId
+    from property_apply,property_induser
+    where recruitId = #{recruitid,jdbcType=INTEGER}
+    AND property_apply.personId =property_induser.personId
+  </select>
+
+
+</mapper>
