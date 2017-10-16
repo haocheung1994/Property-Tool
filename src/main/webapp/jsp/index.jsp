@@ -12,7 +12,7 @@
     <div align="center">
         <img src="/index/img/wel.png">
         <h2>服务已启用!</h2>
-
+        <h2>服务已启用!</h2>
     </div>
     <%--<input type="hidden" name="message" value="<%=request.getAttribute("message") %>">
 
