@@ -188,10 +188,8 @@ public class UserController {
 		Tuser tuserByOpenid =new Tuser();
 		tuserByOpenid=trecruitService.getUserIdByOpenid(openid);
         List<Tbanner> tbannerList=jobuserService.selectIndexban();
-        request.setAttribute("indexBan",tbannerList);
+        request.getSession().setAttribute("indexBan",tbannerList);
         System.out.println("TIP:"+tbannerList+tbannerList.get(0).getBanImg());
-
-
         if(tuserByOpenid!=null){
 		request.getSession().setAttribute("userId",tuserByOpenid.getUserid());
             request.getSession().setAttribute("loginUser", tuserByOpenid);
